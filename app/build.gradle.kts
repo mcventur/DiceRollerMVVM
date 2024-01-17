@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.mpd.pmdm.dicerollerconstraintlayout"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.mpd.pmdm.dicerollerconstraintlayout"
@@ -33,9 +33,16 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures{
+        viewBinding = true
+    }
 }
 
 dependencies {
+    val activityVersion = "1.8.2"
+    // Para instanciar ViewModels en clases Activity
+    implementation("androidx.activity:activity-ktx:$activityVersion")
+
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
