@@ -40,8 +40,10 @@ android {
 
 dependencies {
     val activityVersion = "1.8.2"
+    val fragmentVersion = "1.6.2"
     // Para instanciar ViewModels en clases Activity
     implementation("androidx.activity:activity-ktx:$activityVersion")
+    implementation("androidx.fragment:fragment-ktx:$fragmentVersion")
 
 
     implementation("androidx.core:core-ktx:1.9.0")
