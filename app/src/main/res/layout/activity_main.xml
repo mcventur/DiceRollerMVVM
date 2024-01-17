@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btnRoll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/roll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+
+    <!-- otra opcion para centrar los dados horizontalmente:
+           meterlos en un lineaLayout horizontal, con gravity center
+
+           En este caso, uso layout_weight y layout_gravity en las imágenes
+           para indicar cómo deben situarse y repartirse el espacio disponible.
+           Con el mismo weight => 50% de espacio cada imagen
+           Así conseguimos que se disribuyan por el horizontal_layout, en lugar de estar
+           pegadas en el centro
+            -->
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_height="200dp"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivDice1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            tools:srcCompat="@drawable/dice_1" />
+
+        <ImageView
+            android:id="@+id/ivDice2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/dice_1" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

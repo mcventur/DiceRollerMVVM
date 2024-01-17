@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DiceRollerConstraintLayout</string>
+    <string name="roll">Lanzar</string>
+</resources>
