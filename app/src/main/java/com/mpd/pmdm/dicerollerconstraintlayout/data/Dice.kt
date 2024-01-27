@@ -1,4 +1,4 @@
-package com.mpd.pmdm.dicerollerconstraintlayout
+package com.mpd.pmdm.dicerollerconstraintlayout.data
 
 /**
  * Clase que modela un dado con un número de caras configurable

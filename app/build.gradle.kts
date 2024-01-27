@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    //Plugin KSP para el módulo. La versión ya está indica en el Gradle a nivel de proyecto
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -41,9 +43,20 @@ android {
 dependencies {
     val activityVersion = "1.8.2"
     val fragmentVersion = "1.6.2"
+    val roomVersion = "2.6.1"
     // Para instanciar ViewModels en clases Activity
     implementation("androidx.activity:activity-ktx:$activityVersion")
     implementation("androidx.fragment:fragment-ktx:$fragmentVersion")
+
+    //Dependencias para Room
+    implementation("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+    // To use Kotlin Symbol Processing (KSP).
+    //Esta línea se debe incluir después de haber incluido el plugin ksp en la parte superior de este arcghivo y haber sincronizado
+    ksp("androidx.room:room-compiler:$roomVersion")
+    //Usaremos coroutines con Room
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$roomVersion")
 
 
     implementation("androidx.core:core-ktx:1.9.0")

@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentDados"
-        android:name="com.mpd.pmdm.dicerollerconstraintlayout.DadosFragment"
+        android:name="com.mpd.pmdm.dicerollerconstraintlayout.ui.DadosFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/fragmentBoton"
@@ -18,7 +18,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentBoton"
-        android:name="com.mpd.pmdm.dicerollerconstraintlayout.BotonFragment"
+        android:name="com.mpd.pmdm.dicerollerconstraintlayout.ui.BotonFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

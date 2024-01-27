@@ -1,4 +1,4 @@
-package com.mpd.pmdm.dicerollerconstraintlayout
+package com.mpd.pmdm.dicerollerconstraintlayout.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
