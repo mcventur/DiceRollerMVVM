@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.activityViewModels
+import com.mpd.pmdm.dicerollerconstraintlayout.DiceRollApplication
 import com.mpd.pmdm.dicerollerconstraintlayout.R
 import com.mpd.pmdm.dicerollerconstraintlayout.databinding.FragmentDadosBinding
 
@@ -15,7 +16,7 @@ class DadosFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val twoDicesViewModel: TwoDicesViewModel by activityViewModels<TwoDicesViewModel> {
-        TwoDicesViewModelFactory(6)
+        TwoDicesViewModelFactory(6, (activity?.application as DiceRollApplication).diceRollsRepository )
     }
 
     override fun onCreateView(

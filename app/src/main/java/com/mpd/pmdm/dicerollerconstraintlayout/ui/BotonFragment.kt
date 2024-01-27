@@ -1,11 +1,13 @@
 package com.mpd.pmdm.dicerollerconstraintlayout.ui
 
+import android.app.Application
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import com.mpd.pmdm.dicerollerconstraintlayout.DiceRollApplication
 import com.mpd.pmdm.dicerollerconstraintlayout.databinding.FragmentBotonBinding
 
 class BotonFragment : Fragment() {
@@ -14,7 +16,7 @@ class BotonFragment : Fragment() {
 
     //Instanciamos el sharedViewModel, que pertenecerá al ciclo de vida de la Actividad
     private val twoDicesModel: TwoDicesViewModel by activityViewModels<TwoDicesViewModel> {
-        TwoDicesViewModelFactory(6)
+        TwoDicesViewModelFactory(6, (activity?.application as DiceRollApplication).diceRollsRepository)
     }
 
     override fun onCreateView(

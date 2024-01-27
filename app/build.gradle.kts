@@ -50,7 +50,7 @@ dependencies {
 
     //Dependencias para Room
     implementation("androidx.room:room-runtime:$roomVersion")
-    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+
     // To use Kotlin Symbol Processing (KSP).
     //Esta línea se debe incluir después de haber incluido el plugin ksp en la parte superior de este arcghivo y haber sincronizado
     ksp("androidx.room:room-compiler:$roomVersion")
