@@ -7,15 +7,33 @@
 
     <style name="Theme.DiceRollerConstraintLayout" parent="Base.Theme.DiceRollerConstraintLayout" />
 
-    <style name="HeaderList">
-        <item name="android:textSize">14sp</item>
-        <item name="android:layout_marginStart">2sp</item>
-        <item name="android:layout_marginEnd">2sp</item>
+    <!-- Estilos para la lista de tiradas -->
+    <!-- Estilos general -->
+
+    <!-- La cabecera, con texto más grande -->
+    <style name="ListHeader">
+        <item name="android:textSize">18sp</item>
     </style>
-    <style name="HeaderList.Left">
+    <style name="ListHeader.Left">
         <item name="android:textAlignment">textStart</item>
+        <item name="android:layout_marginStart">4dp</item>
     </style>
-    <style name="HeaderList.Right">
+    <style name="ListHeader.Right">
         <item name="android:textAlignment">textEnd</item>
+        <item name="android:layout_marginEnd">4dp</item>
+    </style>
+    <!-- Los elementos del listado. Recplicamos las alineaciones de la cabecera -->
+    <style name="ListItemLeft">
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:layout_marginStart">4dp</item>
+    </style>
+    <style name="ListItemRight">
+        <item name="android:textAlignment">textEnd</item>
+        <item name="android:layout_marginEnd">4dp</item>
+    </style>
+
+    <!-- Divider style -->
+    <style name="Divider">
+        <item name="android:background">?attr/dividerHorizontal</item>
     </style>
 </resources>
