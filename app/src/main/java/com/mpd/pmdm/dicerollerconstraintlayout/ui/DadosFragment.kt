@@ -10,6 +10,8 @@ import androidx.fragment.app.activityViewModels
 import com.mpd.pmdm.dicerollerconstraintlayout.DiceRollApplication
 import com.mpd.pmdm.dicerollerconstraintlayout.R
 import com.mpd.pmdm.dicerollerconstraintlayout.databinding.FragmentDadosBinding
+import com.mpd.pmdm.dicerollerconstraintlayout.ui.viewmodel.TwoDicesViewModel
+import com.mpd.pmdm.dicerollerconstraintlayout.ui.viewmodel.TwoDicesViewModelFactory
 
 class DadosFragment : Fragment() {
     private var _binding: FragmentDadosBinding? = null

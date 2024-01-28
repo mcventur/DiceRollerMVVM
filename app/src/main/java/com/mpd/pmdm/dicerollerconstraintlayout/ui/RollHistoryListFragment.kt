@@ -8,8 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mpd.pmdm.dicerollerconstraintlayout.DiceRollApplication
-import com.mpd.pmdm.dicerollerconstraintlayout.data.database.DiceRoll
 import com.mpd.pmdm.dicerollerconstraintlayout.databinding.FragmentRollHistoryListBinding
+import com.mpd.pmdm.dicerollerconstraintlayout.ui.adapters.DiceRollHistoryRecyclerAdapter
+import com.mpd.pmdm.dicerollerconstraintlayout.ui.viewmodel.TwoDicesViewModel
+import com.mpd.pmdm.dicerollerconstraintlayout.ui.viewmodel.TwoDicesViewModelFactory
 
 /**
  * A fragment representing a list of Items.
