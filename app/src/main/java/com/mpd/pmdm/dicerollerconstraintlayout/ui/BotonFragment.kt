@@ -1,15 +1,19 @@
 package com.mpd.pmdm.dicerollerconstraintlayout.ui
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.mpd.pmdm.dicerollerconstraintlayout.DiceRollApplication
+import com.mpd.pmdm.dicerollerconstraintlayout.R
 import com.mpd.pmdm.dicerollerconstraintlayout.databinding.FragmentBotonBinding
 import com.mpd.pmdm.dicerollerconstraintlayout.ui.viewmodel.TwoDicesViewModel
 import com.mpd.pmdm.dicerollerconstraintlayout.ui.viewmodel.TwoDicesViewModelFactory
+
 
 class BotonFragment : Fragment() {
     private var _binding: FragmentBotonBinding? = null
@@ -36,6 +40,18 @@ class BotonFragment : Fragment() {
         binding.btnRoll.setOnClickListener {
             twoDicesModel.rollDices()
         }
+
+        binding.btnClearHistory.setOnClickListener {
+            clearRollsHistory()
+        }
+    }
+
+    /**
+     * Muestra un cuadro de diálogo que confirma si se quiere borrar el histórico de tiradas
+     */
+    private fun clearRollsHistory() {
+        val dialog = ClearHistoryDialog()
+        dialog.show(parentFragmentManager,null)
     }
 
     override fun onDestroy() {

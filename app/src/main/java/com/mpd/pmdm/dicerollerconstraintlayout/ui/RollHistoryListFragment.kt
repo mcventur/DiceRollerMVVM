@@ -40,7 +40,7 @@ class RollHistoryListFragment : Fragment() {
         val adapter = DiceRollHistoryRecyclerAdapter()
         binding.recyclerRollsHistoryList.adapter = adapter
 
-        twoDicesViewModel.getShoppingLists().observe(viewLifecycleOwner){
+        twoDicesViewModel.getAllDiceRolls().observe(viewLifecycleOwner){
             adapter.updateList(it)
         }
 

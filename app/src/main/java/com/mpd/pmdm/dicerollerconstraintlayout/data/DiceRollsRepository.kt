@@ -14,4 +14,8 @@ class DiceRollsRepository(private val diceRollsDao: DiceRollsDao) {
     suspend fun insert(diceRoll: DiceRoll){
         diceRollsDao.insert(diceRoll)
     }
+
+    suspend fun clear(){
+        diceRollsDao.clear()
+    }
 }

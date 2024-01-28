@@ -11,11 +11,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/roll"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnClearHistory"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/btnClearHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/clearHistory"
+        app:layout_constraintBottom_toBottomOf="@+id/btnRoll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnRoll" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

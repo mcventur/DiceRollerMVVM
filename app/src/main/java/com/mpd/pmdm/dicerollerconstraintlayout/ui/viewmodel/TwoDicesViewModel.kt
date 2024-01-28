@@ -50,7 +50,10 @@ class TwoDicesViewModel(numSides: Int, private val diceRollsRepository: DiceRoll
     }
 
     //Exponemos una función para recuperar el histórico de tiradas
-    fun getShoppingLists(): LiveData<List<DiceRoll>> = diceRollsRepository.allDiceRolls
+    fun getAllDiceRolls(): LiveData<List<DiceRoll>> = diceRollsRepository.allDiceRolls
+
+    fun clearHistory() = viewModelScope.launch { diceRollsRepository.clear() }
+
 }
 
 class TwoDicesViewModelFactory(

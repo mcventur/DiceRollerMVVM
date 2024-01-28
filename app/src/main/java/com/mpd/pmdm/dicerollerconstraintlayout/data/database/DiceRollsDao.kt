@@ -13,4 +13,7 @@ interface DiceRollsDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(roll: DiceRoll)
+
+    @Query("DELETE FROM dice_rolls")
+    suspend fun clear()
 }

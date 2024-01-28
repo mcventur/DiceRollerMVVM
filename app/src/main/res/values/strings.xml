@@ -7,4 +7,10 @@
     <string name="fecha_y_hora">Fecha y Hora</string>
     <string name="cara_dado_1">Dado 1</string>
     <string name="cara_dado_2">Dado 2</string>
+    <string name="clearHistory">Limpiar Histórico</string>
+    <string name="clearHistoryConfirmMessage">¿Deseas borrar el historial de lanzamientos?\nLa operación es irreversible</string>
+    <string name="clearHistoryConfirmTitle">Borrar historial</string>
+    <string name="yes">Sí</string>
+    <string name="cancel">Cancelar</string>
+    <string name="confirm">Confirmar</string>
 </resources>
