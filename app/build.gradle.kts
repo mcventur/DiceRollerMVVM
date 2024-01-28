@@ -41,6 +41,8 @@ android {
 }
 
 dependencies {
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.recyclerview:recyclerview:1.3.0")
     val activityVersion = "1.8.2"
     val fragmentVersion = "1.6.2"
     val roomVersion = "2.6.1"

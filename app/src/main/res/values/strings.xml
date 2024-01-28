@@ -3,4 +3,8 @@
     <string name="roll">Lanzar</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="id">ID</string>
+    <string name="fecha_y_hora">Fecha y Hora</string>
+    <string name="cara_dado_1">Cara Dado 1</string>
+    <string name="cara_dado_2">Cara Dado 2</string>
 </resources>

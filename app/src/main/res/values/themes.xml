@@ -6,4 +6,16 @@
     </style>
 
     <style name="Theme.DiceRollerConstraintLayout" parent="Base.Theme.DiceRollerConstraintLayout" />
+
+    <style name="HeaderList">
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginStart">2sp</item>
+        <item name="android:layout_marginEnd">2sp</item>
+    </style>
+    <style name="HeaderList.Left">
+        <item name="android:textAlignment">textStart</item>
+    </style>
+    <style name="HeaderList.Right">
+        <item name="android:textAlignment">textEnd</item>
+    </style>
 </resources>
