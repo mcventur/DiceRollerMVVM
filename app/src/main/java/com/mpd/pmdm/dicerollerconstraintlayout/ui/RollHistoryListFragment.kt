@@ -41,7 +41,7 @@ class RollHistoryListFragment : Fragment() {
         binding.recyclerRollsHistoryList.adapter = adapter
 
         twoDicesViewModel.getAllDiceRolls().observe(viewLifecycleOwner){
-            adapter.updateList(it)
+            adapter.submitList(it)
         }
 
 

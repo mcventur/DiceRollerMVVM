@@ -1,7 +1,5 @@
 package com.mpd.pmdm.dicerollerconstraintlayout.ui
 
-import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.mpd.pmdm.dicerollerconstraintlayout.DiceRollApplication
-import com.mpd.pmdm.dicerollerconstraintlayout.R
 import com.mpd.pmdm.dicerollerconstraintlayout.databinding.FragmentBotonBinding
 import com.mpd.pmdm.dicerollerconstraintlayout.ui.viewmodel.TwoDicesViewModel
 import com.mpd.pmdm.dicerollerconstraintlayout.ui.viewmodel.TwoDicesViewModelFactory
@@ -21,7 +18,10 @@ class BotonFragment : Fragment() {
 
     //Instanciamos el sharedViewModel, que pertenecerá al ciclo de vida de la Actividad
     private val twoDicesModel: TwoDicesViewModel by activityViewModels<TwoDicesViewModel> {
-        TwoDicesViewModelFactory(6, (activity?.application as DiceRollApplication).diceRollsRepository)
+        TwoDicesViewModelFactory(
+            6,
+            (activity?.application as DiceRollApplication).diceRollsRepository
+        )
     }
 
     override fun onCreateView(
@@ -51,7 +51,7 @@ class BotonFragment : Fragment() {
      */
     private fun clearRollsHistory() {
         val dialog = ClearHistoryDialog()
-        dialog.show(parentFragmentManager,null)
+        dialog.show(parentFragmentManager, null)
     }
 
     override fun onDestroy() {
