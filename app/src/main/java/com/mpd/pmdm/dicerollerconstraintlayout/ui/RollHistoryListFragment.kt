@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,6 +23,8 @@ import com.mpd.pmdm.dicerollerconstraintlayout.DiceRollApplication
 import com.mpd.pmdm.dicerollerconstraintlayout.databinding.FragmentRollHistoryListBinding
 import com.mpd.pmdm.dicerollerconstraintlayout.ui.viewmodel.TwoDicesViewModel
 import com.mpd.pmdm.dicerollerconstraintlayout.ui.viewmodel.TwoDicesViewModelFactory
+import java.text.SimpleDateFormat
+import java.util.Date
 
 /**
  * A fragment representing a list of Items.
@@ -46,6 +49,7 @@ class RollHistoryListFragment : Fragment() {
         return binding.root
     }
 
+    @OptIn(ExperimentalFoundationApi::class) //Para usar stickyHeader() sin warnings, ya que es experimental
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -59,15 +63,35 @@ class RollHistoryListFragment : Fragment() {
                             .fillMaxSize()
                             .padding(top = 56.dp)
                     ) {
+                        stickyHeader {
+                            Row(modifier = Modifier.fillMaxWidth()){
+                                Text("ID", modifier = Modifier.weight(1f))
+                                Text("Fecha y hora", modifier = Modifier.weight(3f))
+                                Text("Dado 1", modifier = Modifier.weight(2f))
+                                Text("Dado 2", modifier = Modifier.weight(2f))
+                            }
+                        }
                         items(diceRollsList.value.size) {
-                            Card(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(8.dp)
-                            ) {
-                                Row {
-                                    Text(diceRollsList.value[it].id.toString())
-                                }
+                            Row (
+                                modifier = Modifier.fillMaxWidth()
+                            ){
+                                Text(
+                                    text = diceRollsList.value[it].id.toString(),
+                                    modifier = Modifier.weight(1f)
+                                )
+                                val dateTime = diceRollsList.value[it].dateTime
+                                Text(
+                                    text = SimpleDateFormat("d/MM/y h:mm a").format(Date(dateTime)),
+                                    modifier = Modifier.weight(3f)
+                                )
+                                Text(
+                                    text = diceRollsList.value[it].sideDice1.toString(),
+                                    modifier = Modifier.weight(2f)
+                                )
+                                Text(
+                                    text = diceRollsList.value[it].siceDice2.toString(),
+                                    modifier = Modifier.weight(2f)
+                                )
                             }
                         }
                     }
