@@ -4,80 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/layout_general_padding">
-    <!-- Cabeceras de la lista -->
-    <TextView
-        android:id="@+id/id_header"
-        style="@style/ListHeader.Right"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/id"
-        app:layout_constraintEnd_toStartOf="@+id/time_header"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/time_header"
-        style="@style/ListHeader.Left"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/fecha_y_hora"
-        app:layout_constraintEnd_toStartOf="@+id/side1_header"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_weight="3"
-        app:layout_constraintStart_toEndOf="@+id/id_header"
-        app:layout_constraintTop_toTopOf="@+id/id_header" />
 
 
-
-    <TextView
-        android:id="@+id/side1_header"
-        style="@style/ListHeader.Right"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/cara_dado_1"
-        app:layout_constraintEnd_toStartOf="@+id/side2_header"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_weight="2"
-        app:layout_constraintStart_toEndOf="@+id/time_header"
-        app:layout_constraintTop_toTopOf="@+id/time_header" />
-
-    <TextView
-        android:id="@+id/side2_header"
-        style="@style/ListHeader.Right"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/cara_dado_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_weight="2"
-        app:layout_constraintStart_toEndOf="@+id/side1_header"
-        app:layout_constraintTop_toTopOf="@+id/side1_header" />
-
-    <View
-        android:id="@+id/divider"
-        style="@style/Divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="2dp"
-        app:layout_constraintTop_toBottomOf="@id/id_header" />
-
-    <!-- Meto el RecyclerView dentro de una ScrollView para dejar las cabeceras fijas -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/id_header"
-        android:paddingBottom="30dp"
-        android:layout_marginTop="6dp">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerRollsHistoryList"
+        <androidx.compose.ui.platform.ComposeView
+            android:id="@+id/compose_view"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginEnd="6dp"/>
-    </ScrollView>
+            android:layout_height="match_parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

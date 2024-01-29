@@ -41,8 +41,9 @@ android {
 }
 
 dependencies {
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.recyclerview:recyclerview:1.3.0")
+    implementation("androidx.compose.ui:ui-android:1.6.0")
+    implementation("androidx.compose.material3:material3:1.1.2")
+    implementation("androidx.compose.runtime:runtime-livedata")
     val activityVersion = "1.8.2"
     val fragmentVersion = "1.6.2"
     val roomVersion = "2.6.1"

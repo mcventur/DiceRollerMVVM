@@ -4,12 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Card
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.mpd.pmdm.dicerollerconstraintlayout.DiceRollApplication
 import com.mpd.pmdm.dicerollerconstraintlayout.databinding.FragmentRollHistoryListBinding
-import com.mpd.pmdm.dicerollerconstraintlayout.ui.adapters.DiceRollHistoryRecyclerAdapter
 import com.mpd.pmdm.dicerollerconstraintlayout.ui.viewmodel.TwoDicesViewModel
 import com.mpd.pmdm.dicerollerconstraintlayout.ui.viewmodel.TwoDicesViewModelFactory
 
@@ -22,7 +32,10 @@ class RollHistoryListFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val twoDicesViewModel: TwoDicesViewModel by activityViewModels {
-        TwoDicesViewModelFactory(6, (activity?.application as DiceRollApplication).diceRollsRepository)
+        TwoDicesViewModelFactory(
+            6,
+            (activity?.application as DiceRollApplication).diceRollsRepository
+        )
     }
 
     override fun onCreateView(
@@ -36,19 +49,35 @@ class RollHistoryListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.recyclerRollsHistoryList.layoutManager = LinearLayoutManager(context)
-        val adapter = DiceRollHistoryRecyclerAdapter()
-        binding.recyclerRollsHistoryList.adapter = adapter
-
-        twoDicesViewModel.getAllDiceRolls().observe(viewLifecycleOwner){
-            adapter.submitList(it)
+        binding.composeView.setContent {
+            MaterialTheme {
+                Surface {
+                    val diceRollsList =
+                        twoDicesViewModel.getAllDiceRolls().observeAsState(emptyList())
+                    LazyColumn(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(top = 56.dp)
+                    ) {
+                        items(diceRollsList.value.size) {
+                            Card(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(8.dp)
+                            ) {
+                                Row {
+                                    Text(diceRollsList.value[it].id.toString())
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
-
-
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        override fun onDestroyView() {
+            super.onDestroyView()
+            _binding = null
+        }
     }
-}
