@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,12 +15,16 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.mpd.pmdm.dicerollerconstraintlayout.DiceRollApplication
+import com.mpd.pmdm.dicerollerconstraintlayout.data.database.DiceRoll
 import com.mpd.pmdm.dicerollerconstraintlayout.databinding.FragmentRollHistoryListBinding
 import com.mpd.pmdm.dicerollerconstraintlayout.ui.viewmodel.TwoDicesViewModel
 import com.mpd.pmdm.dicerollerconstraintlayout.ui.viewmodel.TwoDicesViewModelFactory
@@ -64,35 +69,10 @@ class RollHistoryListFragment : Fragment() {
                             .padding(top = 56.dp)
                     ) {
                         stickyHeader {
-                            Row(modifier = Modifier.fillMaxWidth()){
-                                Text("ID", modifier = Modifier.weight(1f))
-                                Text("Fecha y hora", modifier = Modifier.weight(3f))
-                                Text("Dado 1", modifier = Modifier.weight(2f))
-                                Text("Dado 2", modifier = Modifier.weight(2f))
-                            }
+                            Header()
                         }
                         items(diceRollsList.value.size) {
-                            Row (
-                                modifier = Modifier.fillMaxWidth()
-                            ){
-                                Text(
-                                    text = diceRollsList.value[it].id.toString(),
-                                    modifier = Modifier.weight(1f)
-                                )
-                                val dateTime = diceRollsList.value[it].dateTime
-                                Text(
-                                    text = SimpleDateFormat("d/MM/y h:mm a").format(Date(dateTime)),
-                                    modifier = Modifier.weight(3f)
-                                )
-                                Text(
-                                    text = diceRollsList.value[it].sideDice1.toString(),
-                                    modifier = Modifier.weight(2f)
-                                )
-                                Text(
-                                    text = diceRollsList.value[it].siceDice2.toString(),
-                                    modifier = Modifier.weight(2f)
-                                )
-                            }
+                            BodyList(diceRollsList, it)
                         }
                     }
                 }
@@ -100,7 +80,51 @@ class RollHistoryListFragment : Fragment() {
         }
     }
 
-        override fun onDestroyView() {
+    @Composable
+    private fun BodyList(
+        diceRollsList: State<List<DiceRoll>>,
+        it: Int
+    ) {
+        val bgColor = if(it % 2 == 0) Color(0xFFCCCCCC) else Color(0xFFFFFFFF)
+
+        Row(
+            modifier = Modifier.fillMaxWidth()
+                .background(bgColor),
+        ) {
+            Text(
+                text = diceRollsList.value[it].id.toString(),
+                modifier = Modifier.weight(1f)
+            )
+            val dateTime = diceRollsList.value[it].dateTime
+            Text(
+                text = SimpleDateFormat("d/MM/y h:mm a").format(Date(dateTime)),
+                modifier = Modifier.weight(3f)
+            )
+            Text(
+                text = diceRollsList.value[it].sideDice1.toString(),
+                modifier = Modifier.weight(2f)
+            )
+            Text(
+                text = diceRollsList.value[it].siceDice2.toString(),
+                modifier = Modifier.weight(2f)
+            )
+        }
+    }
+
+    @Composable
+    private fun Header(modifier: Modifier = Modifier) {
+        Surface{ //Lo meto en una Surface para que no sea transparente
+            Row(modifier = Modifier.fillMaxWidth()) {
+                Text("ID", modifier = Modifier.weight(1f))
+                Text("Fecha y hora", modifier = Modifier.weight(3f))
+                Text("Dado 1", modifier = Modifier.weight(2f))
+                Text("Dado 2", modifier = Modifier.weight(2f))
+            }
+        }
+
+    }
+
+    override fun onDestroyView() {
             super.onDestroyView()
             _binding = null
         }
